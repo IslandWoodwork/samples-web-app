@@ -1,2 +1,2 @@
 # samples-web-app
-Our company's web application to replace Microsoft Access
+Our company's XAMPP web application to replace Microsoft Access
