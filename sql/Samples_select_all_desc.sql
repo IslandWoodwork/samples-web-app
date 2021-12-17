@@ -1,0 +1,1 @@
+SELECT * FROM Samples ORDER BY ID DESC;
