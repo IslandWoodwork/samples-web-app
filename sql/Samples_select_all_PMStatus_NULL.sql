@@ -1,0 +1,3 @@
+SELECT * FROM Samples
+WHERE PMStatus IS NULL
+ORDER BY ID;

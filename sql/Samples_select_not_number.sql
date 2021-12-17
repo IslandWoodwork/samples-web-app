@@ -1,0 +1,2 @@
+SELECT * FROM Samples
+WHERE ISNUMERIC(ID) = 0;

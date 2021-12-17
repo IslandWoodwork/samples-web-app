@@ -1,0 +1,1 @@
+SELECT MAX(ID) as maxid FROM Samples;
