@@ -1,5 +1,5 @@
 // GLOBAL VARIABLES
-var IS_EDITING_GRID = false;
+var IS_EDITING_FLAG = false;
 
 /// - Home page - ///
 $(function() {
@@ -41,7 +41,7 @@ $(function() {
                 selectionMode: "single",
                 elementAttr: { class: "drawer-items" },
                 onSelectionChanged: function(e) {
-                    if(IS_EDITING_GRID) {
+                    if(IS_EDITING_FLAG) {
                         // TODO: Change selected
                         console.log("You are editing.");
                         DevExpress.ui.notify("You have unsaved changes to the grid.");

@@ -9,7 +9,7 @@ include("dbconnect.php"); // $conn
 $opportunities = json_decode($_POST['jobs'], true);
 
 /// -- Inserting test data -- ///
-$sql = "INSERT INTO InnergyOpportunities (OppNumber, OppName, Address1, Address2, City, State, ZipCode, Country, Status, ProjNumber, ProjName)
+$sql = "INSERT INTO ".$_SERVER['TABLE_IO']." (OppNumber, OppName, Address1, Address2, City, State, ZipCode, Country, Status, ProjNumber, ProjName)
         VALUES ('O-21-Testing', 'Test Opportunity', '31 Howard Place', '', 'Ronkonkoma', 'New York', '11757', 'United States of America', 'Approved', 'P-21-testing', 'Test Project')";
 
 // Handle exceptions/errors for test INSERT
@@ -29,10 +29,10 @@ if (sqlsrv_query($conn, $sql) === false){
     echo "Test INSERT Innergy Opportunities successful.\n\n";
 }
 
-/// -- Clearing InnergyOpportunities table data -- ///
+/// -- Clearing Innergy Opportunities table data -- ///
 echo "Clearing data from Innergy Opportunities table ...\n";
 
-$sql = "DELETE FROM InnergyOpportunities";
+$sql = "DELETE FROM ".$_SERVER['TABLE_IO']."";
 
 // Handle exceptions/errors for DELETE
 if (sqlsrv_query($conn, $sql) === false){
@@ -51,10 +51,10 @@ if (sqlsrv_query($conn, $sql) === false){
     echo "All data inside Innergy Opportunities table successfully deleted.\n\n";
 }
 
-/// -- Insert Innergy API data into InnergyOpportunities table -- ///
+/// -- Insert Innergy API data into Innergy Opportunities table -- ///
 echo "Inserting Innergy Opportunities API data to Innergy Opportunities table ...\n";
 
-$sql = "INSERT INTO InnergyOpportunities (OppNumber, OppName, Address1, Address2, City, State, ZipCode, Country, Status, ProjNumber, ProjName) VALUES (";
+$sql = "INSERT INTO ".$_SERVER['TABLE_IO']." (OppNumber, OppName, Address1, Address2, City, State, ZipCode, Country, Status, ProjNumber, ProjName) VALUES (";
 
 foreach ($opportunities as $opportunity) {
     $address = $opportunity['Address'];

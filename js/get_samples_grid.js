@@ -103,7 +103,7 @@ var sampleData = new DevExpress.data.DataSource({
 });
 
 /// - Create DevExpress DataGrid - ///
-var SELECTED, IS_EDITING_GRID=false, EDIT_ROW_KEY, CHANGES;
+var SELECTED, IS_EDITING_FLAG=false, EDIT_ROW_KEY, CHANGES;
 var sampleGrid = $("#samplesGridContainer").dxDataGrid({
     dataSource: sampleData,
     allowColumnReordering: true,
@@ -193,6 +193,7 @@ var sampleGrid = $("#samplesGridContainer").dxDataGrid({
         // Make column a dropdown box
         lookup: {
             dataSource: [
+                {status: ""},
                 {status: "Ordered"},
                 {status: "Completed"},
                 {status: "Sent"},
@@ -245,6 +246,7 @@ var sampleGrid = $("#samplesGridContainer").dxDataGrid({
         // Make column a dropdown box
         lookup: {
             dataSource: [
+                {sent: ""},
                 {sent: "Architect"},
                 {sent: "Client"},
                 {sent: "GC"},
@@ -344,6 +346,7 @@ var sampleGrid = $("#samplesGridContainer").dxDataGrid({
         // Make column a dropdown box
         lookup: {
             dataSource: [
+                {awino: ""},
                 {awino: "1 - Lacquer, Nitrocellulose"},
                 {awino: "2 - Lacquer, Precatalyzed"},
                 {awino: "3 - Lacquer, Postcatalyzed"},
@@ -637,11 +640,11 @@ var sampleGrid = $("#samplesGridContainer").dxDataGrid({
     }, // Ends Master-Detail
     onEditCanceled: function(e) {
             //console.log("EditCanceled");
-        IS_EDITING_GRID = false;
+        IS_EDITING_FLAG = false;
     },
     onEditingStart: function(e) {
             //console.log("EditingStart");
-        IS_EDITING_GRID = true;
+        IS_EDITING_FLAG = true;
     },
     onEditorPrepared: function(e) {
         
@@ -667,7 +670,7 @@ var sampleGrid = $("#samplesGridContainer").dxDataGrid({
     },
     onSaved: function(e) {
             //console.log("Saved");
-        IS_EDITING_GRID = false;
+        IS_EDITING_FLAG = false;
     },
     onSaving: function(e) {
         // If no changes then do nothing

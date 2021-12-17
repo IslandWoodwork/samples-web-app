@@ -11,7 +11,7 @@ include("dbconnect_mysql.php"); // $db
 $projects = json_decode($_POST['projects'], true);
 
 /// Inserting test data ///
-$sql = "INSERT INTO InnergyProjects (`Number`, `ProjName`, `ExternalId`, `CustName`, `Address1`, `Address2`, `City`, `State`, `ZipCode`, `Country`, `Status`, `ProjectManagerName`) VALUES ('P-21-Testing', 'Test Project', 'TEST12345', 'Testing\'s records, Inc.', '31 Howard Place', '', 'Ronkonkoma', 'New York', '11757', 'United States of America', 'Approved', 'Andrew Gottilla')";
+$sql = "INSERT INTO ".$_SERVER['TABLE_IP']." (`Number`, `ProjName`, `ExternalId`, `CustName`, `Address1`, `Address2`, `City`, `State`, `ZipCode`, `Country`, `Status`, `ProjectManagerName`) VALUES ('P-21-Testing', 'Test Project', 'TEST12345', 'Testing\'s records, Inc.', '31 Howard Place', '', 'Ronkonkoma', 'New York', '11757', 'United States of America', 'Approved', 'Andrew Gottilla')";
 
 // try-catch to handle exceptions/errors for INSERT
 try {
@@ -28,8 +28,8 @@ try {
 
 echo "Clearing data from Innergy table ...\n";
 
-/// Clearing InnergyProjects table data ///
-$sql = "DELETE FROM InnergyProjects";
+/// Clearing Innergy Projects table data ///
+$sql = "DELETE FROM ".$_SERVER['TABLE_IP']."";
 
 // try-catch to handle exceptions/errors for DELETE
 try {
@@ -45,8 +45,8 @@ try {
 
 echo "Inserting Innergy API data to Innergy table ...\n";
 
-/// Insert Innergy API data into InnergyProjects table ///
-$sql = "INSERT INTO `InnergyProjects` (`Number`, `ProjName`, `ExternalId`, `CustName`, `Address1`, `Address2`, `City`, `State`, `ZipCode`, `Country`, `Status`, `ProjectManagerName`) VALUES (";
+/// Insert Innergy API data into Innergy Projects table ///
+$sql = "INSERT INTO ".$_SERVER['TABLE_IP']." (`Number`, `ProjName`, `ExternalId`, `CustName`, `Address1`, `Address2`, `City`, `State`, `ZipCode`, `Country`, `Status`, `ProjectManagerName`) VALUES (";
 
 foreach ($projects as $project) {
     // add second apostrophe to data, if there is one, for the query 
